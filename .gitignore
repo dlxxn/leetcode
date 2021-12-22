@@ -1,0 +1,12 @@
+target
+.classpath
+.project
+.settings/*
+*.iml
+.idea
+.clover
+.DS_Store
+*.swp
+.vscode
+*.log*
+*.dir_IS_UNDEFINED
