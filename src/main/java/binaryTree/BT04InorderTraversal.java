@@ -9,7 +9,8 @@ import java.util.List;
  */
 public class BT04InorderTraversal {
     public static void main(String[] args) {
-        String str = "[1,2,3,4,5,6,null]";
+        //String str = "[1,2,3,4,5,6,null]";
+        String str = "[3,9,20,null,null,15,7]";
         TreeNode treeNode = TreeNode.mkTree(str);
         System.out.println(new BT04InorderTraversal().inorderTraversal(treeNode));
     }
