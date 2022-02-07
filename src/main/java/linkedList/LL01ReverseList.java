@@ -46,6 +46,20 @@ public class LL01ReverseList {
         return prev;
     }*/
 
+    public ListNode reverseList(ListNode head) {
+        ListNode prev = null;
+        ListNode curr = head;
+
+        while (curr != null) {
+            ListNode nextTemp = curr.next;
+            curr.next = prev;
+            prev = curr;
+            curr = nextTemp;
+        }
+
+        return prev;
+    }
+
     /**
      * 方法二：递归
      * 递归版本稍微复杂一些，其关键在于反向工作。假设列表的其余部分已经被反转，现在我们应该如何反转它前面的部分？
@@ -85,7 +99,7 @@ public class LL01ReverseList {
      * 空间复杂度：O(n)，由于使用递归，将会使用隐式栈空间。递归深度可能会达到 n 层。
      * @return
      */
-    public ListNode reverseList(ListNode head) {
+    /*public ListNode reverseList(ListNode head) {
 
         if (head == null || head.next == null) {
             return head;
@@ -98,7 +112,7 @@ public class LL01ReverseList {
 
         return p;
 
-    }
+    }*/
 
 
 
