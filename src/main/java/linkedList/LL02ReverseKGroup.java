@@ -1,11 +1,9 @@
 package linkedList;
 
-import java.util.List;
-
 /**
- * 给你一个链表，每 k 个节点一组进行翻转，请你返回翻转后的链表。
- * k 是一个正整数，它的值小于或等于链表的长度。
- * 如果节点总数不是 k 的整数倍，那么请将最后剩余的节点保持原有顺序。
+ * 给你一个链表，每k个节点一组进行翻转，请你返回翻转后的链表。
+ * k是一个正整数，它的值小于或等于链表的长度。
+ * 如果节点总数不是k的整数倍，那么请将最后剩余的节点保持原有顺序。
  * hard
  */
 public class LL02ReverseKGroup {
@@ -95,7 +93,7 @@ public class LL02ReverseKGroup {
 
     }*/
 
-    public ListNode reverseKGroup(ListNode head, int k) {
+    /*public ListNode reverseKGroup(ListNode head, int k) {
         if (head == null || head.next == null) {
             return head;
         }
@@ -121,6 +119,43 @@ public class LL02ReverseKGroup {
             prev.next = reverse(start);
 
             start.next = next;
+            prev = start;
+            end = start;
+
+        }
+
+        return dummy.next;
+    }*/
+
+    private ListNode reverseKGroup(ListNode head, int k) {
+
+        if (head == null || head.next == null) {
+            return head;
+        }
+
+        ListNode dummy = new ListNode(0);
+        dummy.next = head;
+
+        ListNode prev = dummy;
+        ListNode end = dummy;
+
+        while (end.next != null) {
+            for (int i = 0; i < k && end != null; i++) {
+                end = end.next;
+            }
+
+            if (end == null) {
+                break;
+            }
+
+            ListNode next = end.next;
+            end.next = null;
+
+            ListNode start = prev.next;
+            prev.next = reverse(start);
+
+            start.next = next;
+
             prev = start;
             end = start;
 
