@@ -3,6 +3,9 @@ package linkedList;
 import java.util.HashSet;
 import java.util.Set;
 
+/**
+ * easy
+ */
 public class LL04HasCycle {
 
     /**
