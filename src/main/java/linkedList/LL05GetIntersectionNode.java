@@ -4,6 +4,9 @@ import java.util.HashSet;
 import java.util.Set;
 
 /**
+ *
+ * 给你两个单链表的头节点 headA 和 headB ，请你找出并返回两个单链表相交的起始
+ * 节点。如果两个链表不存在相交节点，返回 null 。
  * easy
  */
 public class LL05GetIntersectionNode {
@@ -66,7 +69,8 @@ public class LL05GetIntersectionNode {
      * 只有当链表headA 和 headB 都不为空时，两个链表才可能相交。因此首先判断链表headA 和 headB 是否为空，如果其中至少有一个链表为空，则两个链表一定不相交，
      * 返回null。
      *
-     * 当链表}headA 和 headB 都不为空时，创建两个指针 pA 和 pB，初始时分别指向两个链表的头节点headA 和 headB，然后将两个指针依次遍历两个链表的每个节点。
+     * 当链表}headA 和 headB 都不为空时，创建两个指针 pA 和 pB，初始时分别指向两个链表的头节点headA 和 headB，然后将两个指针
+     * 依次遍历两个链表的每个节点。
      * 具体做法如下：
      *
      * 每步操作需要同时更新指针 pA 和 pB。
@@ -81,7 +85,8 @@ public class LL05GetIntersectionNode {
      *
      * pB走过的路径为B链+A链
      *
-     * pA和pB走过的长度都相同，都是A链和B链的长度之和，相当于将两条链从尾端对齐，如果相交，则会提前在相交点相遇，如果没有相交点，则会在最后相遇。
+     * pA和pB走过的长度都相同，都是A链和B链的长度之和，相当于将两条链从尾端对齐，如果相交，则会提前在相交点相遇，
+     * 如果没有相交点，则会在最后相遇。
      *
      * pA:1->2->3->4->5->6->null->9->5->6->null
      * pB:9->5->6->null->1->2->3->4->5->6->null

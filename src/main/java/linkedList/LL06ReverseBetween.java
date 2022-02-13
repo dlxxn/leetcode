@@ -1,16 +1,17 @@
 package linkedList;
 
 /**
- * 给你单链表的头指针 head 和两个整数left 和 right ，其中left <= right 。请你反转从位置 left 到位置 right 的链表节点，返回 反转后的链表 。
+ * 给你单链表的头指针 head 和两个整数left 和 right ，其中left <= right 。请你反转从位置 left 到位置 right 的链表节点，
+ * 返回 反转后的链表 。
  *
  * medium
  */
 public class LL06ReverseBetween {
 
     public static void main(String[] args) {
-        int[] input1 = new int[]{9,7,2,5,4,3,6};
+        int[] input1 = new int[]{1,2,3,4,5};
         ListNode list1 = ListNode.buildListNode(input1);
-        System.out.println(new LL06ReverseBetween().reverseBetween(list1, 3, 6));
+        System.out.println(new LL06ReverseBetween().reverseBetween(list1, 2, 4));
     }
 
 

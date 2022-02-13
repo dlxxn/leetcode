@@ -37,7 +37,7 @@ public class LL08MergeKLists {
     private ListNode mergeKLists(ArrayList<ListNode> listNodes) {
         ListNode ans = null;
         for (int i=0; i < listNodes.size(); i++) {
-            ans = mergeTowList(ans, listNodes.get(i));
+            ans = mergeTwoList(ans, listNodes.get(i));
         }
 
         return ans;
@@ -63,33 +63,29 @@ public class LL08MergeKLists {
      *
      * 时间复杂度：O(n)。
      * 空间复杂度：O(1)。
-     * @param a
-     * @param b
+     * @param l1
+     * @param l2
      * @return
      */
-    private ListNode mergeTowList(ListNode a, ListNode b) {
-        if (a == null || b == null) {
-            return a != null?a:b;
-        }
+    public ListNode mergeTwoList(ListNode l1, ListNode l2) {
+        ListNode dummyNode = new ListNode(0);
 
-        ListNode head = new ListNode(0);
-        ListNode tail = head;
-        ListNode aPtr = a;
-        ListNode bPtr = b;
+        ListNode prev = dummyNode;
 
-        while (aPtr != null && bPtr != null) {
-            if (aPtr.val < bPtr.val) {
-                tail.next = aPtr;
-                aPtr = aPtr.next;
+        while (l1 != null && l2 != null) {
+            if (l1.val < l2.val) {
+                prev.next = l1;
+                l1 = l1.next;
             } else {
-                tail.next = bPtr;
-                bPtr = bPtr.next;
+                prev.next = l2;
+                l2 = l2.next;
             }
-            tail = tail.next;
+
+            prev = prev.next;
         }
 
-        tail.next = (aPtr != null?aPtr:bPtr) ;
+        prev.next = l1 == null ?l2:l1;
 
-        return head.next;
+        return dummyNode.next;
     }
 }
