@@ -82,9 +82,6 @@ public class A01FindKthLargest {
 
     /**
      * 将轴值大的元素放在右边，小的放在左边
-     * @param left
-     * @param right
-     * @param pivot_index
      * @return
      */
     public int partition(int left, int right, int pivot_index) {
@@ -97,7 +94,7 @@ public class A01FindKthLargest {
         //遍历数组调整轴值位置
         for (int i = left; i <= right; i++) {
             if (this.nums[i] < pivot) {
-                swap(store_index, i);
+                //swap(store_index, i);
                 store_index ++;
             }
         }
@@ -114,4 +111,65 @@ public class A01FindKthLargest {
         this.nums[a] = this.nums[b];
         this.nums[b] = temp;
     }
+
+    /**
+     * 堆排序
+     *
+     * 复杂度分析
+     *
+     * 时间复杂度：O(nlogn)，建堆的时间代价是 O(n)，删除的总代价是 O(klogn)，因为 k<n，故渐进时间复杂为 O(n+klogn)=O(nlogn)。
+     * 空间复杂度：O(1)，
+     * @param nums
+     * @param k
+     * @return
+     */
+/*    private int findKthLargest(int[] nums, int k) {
+        this.nums = nums;
+        int length = nums.length;
+
+        return this.heapSort(length, k);
+    }
+
+    private int heapSort(int length, int k){
+        int parent = length/2 -1;
+
+        for (int i = parent; i >=0; i--) {
+            this.heapAdjust(i, length);
+        }
+
+        for (int i = length -1; i > 0; i--) {
+            swap(0, i);
+            heapAdjust(0, i);
+        }
+
+        return this.nums[length - k];
+
+    }
+
+    private void heapAdjust(int parent, int length){
+        int tmp = this.nums[parent];
+        int leftChild = 2 * parent + 1;
+        while (leftChild < length) {
+            if (leftChild + 1 < length && this.nums[leftChild] < this.nums[leftChild + 1]) {
+                leftChild ++;
+            }
+
+            if (tmp >= this.nums[leftChild]) {
+                break;
+            }
+
+            this.nums[parent] = this.nums[leftChild];
+
+            parent = leftChild;
+
+            leftChild = 2 * leftChild + 1;
+        }
+        this.nums[parent] = tmp;
+    }
+
+    private void swap(int a, int b) {
+        int tmp = this.nums[a];
+        this.nums[a] = this.nums[b];
+        this.nums[b] = tmp;
+    }*/
 }
