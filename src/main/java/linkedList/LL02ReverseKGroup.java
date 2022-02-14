@@ -127,17 +127,17 @@ public class LL02ReverseKGroup {
         return dummy.next;
     }*/
 
-    private ListNode reverseKGroup(ListNode head, int k) {
+    /*private ListNode reverseKGroup(ListNode head, int k) {
 
         if (head == null || head.next == null) {
             return head;
         }
 
-        ListNode dummy = new ListNode(0);
-        dummy.next = head;
+        ListNode dummyNode = new ListNode(0);
+        dummyNode.next = head;
 
-        ListNode prev = dummy;
-        ListNode end = dummy;
+        ListNode prev = dummyNode;
+        ListNode end = dummyNode;
 
         while (end.next != null) {
             for (int i = 0; i < k && end != null; i++) {
@@ -161,7 +161,7 @@ public class LL02ReverseKGroup {
 
         }
 
-        return dummy.next;
+        return dummyNode.next;
     }
 
     private ListNode reverse(ListNode head) {
@@ -172,6 +172,52 @@ public class LL02ReverseKGroup {
             curr.next = prev;
             prev = curr;
             curr = nextTemp;
+        }
+
+        return prev;
+    }*/
+
+    private ListNode reverseKGroup(ListNode head, int k) {
+        if (head == null || head.next == null) {
+            return head;
+        }
+
+        ListNode dummyNode = new ListNode(0);
+        dummyNode.next = head;
+        ListNode prev = dummyNode;
+        ListNode end = dummyNode;
+
+        while (end.next != null) {
+            for (int i = 0; i < k && end != null; i++) {
+                end = end.next;
+            }
+
+            if (end == null) {
+                break;
+            }
+
+            ListNode next = end.next;
+            end.next = null;
+
+            ListNode start = prev.next;
+            prev.next = reverseList(start);
+            start.next = next;
+
+            prev = start;
+            end = start;
+        }
+
+        return dummyNode.next;
+    }
+    private ListNode reverseList(ListNode head) {
+        ListNode prev = null;
+        ListNode cur = head;
+
+        while (cur != null) {
+            ListNode nextTemp = cur.next;
+            cur.next = prev;
+            prev = cur;
+            cur = nextTemp;
         }
 
         return prev;

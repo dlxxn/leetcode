@@ -24,7 +24,7 @@ public class LL07DetectCycle {
      空间复杂度：O(N)，其中 N 为链表中节点的数目。我们需要将链表中的每个节点都保存在哈希表当中。
      */
 
-    private ListNode detectCycle(ListNode head) {
+/*    private ListNode detectCycle(ListNode head) {
 
         HashSet<ListNode> visited = new HashSet<>();
 
@@ -41,16 +41,40 @@ public class LL07DetectCycle {
         }
 
         return null;
-    }
+    }*/
 
     /**
      * 方法二：快慢指针
      *
      * 复杂度分析
      *
-     * 时间复杂度：O(N)，其中 N 为链表中节点的数目。在最初判断快慢指针是否相遇时，slow 指针走过的距离不会超过链表的总长度；随后寻找入环点时，
-     * 走过的距离也不会超过链表的总长度。因此，总的执行时间为 O(N)+O(N)=O(N)+O(N)=O(N)。
+     * 时间复杂度：O(N)，其中 N 为链表中节点的数目。在最初判断快慢指针是否相遇时，slow 指针走过的距离不会超过链表的总长度；
+     * 随后寻找入环点时，走过的距离也不会超过链表的总长度。因此，总的执行时间为 O(N)+O(N)=O(N)。
      *
      * 空间复杂度：O(1)。我们只使用了slow,fast,ptr 三个指针。
      */
+
+    public ListNode detectCycle(ListNode head) {
+        if (head == null) {
+            return null;
+        }
+        ListNode slow = head, fast = head;
+        while (fast != null) {
+            slow = slow.next;
+            if (fast.next != null) {
+                fast = fast.next.next;
+            } else {
+                return null;
+            }
+            if (fast == slow) {
+                ListNode ptr = head;
+                while (ptr != slow) {
+                    ptr = ptr.next;
+                    slow = slow.next;
+                }
+                return ptr;
+            }
+        }
+        return null;
+    }
 }

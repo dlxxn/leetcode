@@ -17,6 +17,12 @@ public class LL01ReverseList {
      *
      * 在遍历列表时，将当前节点的next 指针改为指向前一个元素。由于节点没有引用其上一个节点，因此必须事先存储其前一个元素。
      * 在更改引用之前，还需要另一个指针来存储下一个节点。不要忘记在最后返回新的头引用！
+     *
+     * 复杂度分析
+     *
+     * 时间复杂度：O(n)，其中 n 是链表的长度。需要遍历链表一次。
+     *
+     * 空间复杂度：O(1)。
      * @param head
      * @return
      */
@@ -46,7 +52,7 @@ public class LL01ReverseList {
         return prev;
     }*/
 
-    public ListNode reverseList(ListNode head) {
+/*    public ListNode reverseList(ListNode head) {
         ListNode prev = null;
         ListNode curr = head;
 
@@ -58,7 +64,7 @@ public class LL01ReverseList {
         }
 
         return prev;
-    }
+    }*/
 
     /**
      * 方法二：递归
@@ -69,8 +75,7 @@ public class LL01ReverseList {
      * n1→…→nk−1→nk→nk+1←…←nm
      * 我们希望 nk+1的下一个节点指向 nk。
      * 所以，nk.next.next=nk。
-     * 要小心的是 n1的下一个必须指向∅ 。如果你忽略了这一点，你的链表中可能会产生循环。如果使用大小为 22的链表测试代码，则可
-     * 能会捕获此错误。
+     * 要小心的是 n1的下一个必须指向∅ 。如果你忽略了这一点，你的链表中可能会产生循环。
      *
      * reverseList: head=1
      *     reverseList: head=2
@@ -88,8 +93,8 @@ public class LL01ReverseList {
      * 	1.next.next->1，即2->1
      *
      * 	最后返回cur
-     * 	不妨假设链表为1，2，3，4，5。按照递归，当执行reverseList（5）的时候返回了5这个节点，reverseList(4)中的p就是5这个节点
-     * 	，我们看看reverseList（4）接下来执行完之后，5->next = 4, 4->next = null。这时候返回了p这个节点，也就是链表5->4->null，
+     * 不妨假设链表为1，2，3，4，5。按照递归，当执行reverseList（5）的时候返回了5这个节点，reverseList(4)中的p就是5这个节点
+     * ，我们看看reverseList（4）接下来执行完之后，5->next = 4, 4->next = null。这时候返回了p这个节点，也就是链表5->4->null，
      * 	接下来执行reverseList（3），代码解析为4->next = 3,3->next = null，这个时候p就变成了，5->4->3->null, reverseList(2),
      * 	reverseList(1)依次类推，p就是:5->4->3->2->1->null
      *
@@ -99,7 +104,7 @@ public class LL01ReverseList {
      * 空间复杂度：O(n)，由于使用递归，将会使用隐式栈空间。递归深度可能会达到 n 层。
      * @return
      */
-    /*public ListNode reverseList(ListNode head) {
+    public ListNode reverseList(ListNode head) {
 
         if (head == null || head.next == null) {
             return head;
@@ -112,7 +117,7 @@ public class LL01ReverseList {
 
         return p;
 
-    }*/
+    }
 
 
 
